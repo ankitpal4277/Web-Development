@@ -1,0 +1,17 @@
+td{
+    border: 2px solid black;
+    padding: 4px;
+}
+
+.days{
+    background-color: aqua;
+}
+
+.time{
+    background-color: lime;
+}
+
+table{
+    border-spacing: 5px;
+
+}

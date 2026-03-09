@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+
+        ul{
+            border: 1px solid black;
+            background-color: rgb(231, 229, 226);
+            list-style: none;
+            display: flex;
+            margin: 0px 330px;
+            padding: 0px;
+            border-radius: 5px;
+        }
+
+        ul li{
+            /* border: 1px solid black; */
+            
+            height: 80px;
+            /* flex-grow: 1; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon{
+            flex-grow: 3;
+        }
+
+        #logo{
+            height: 100%;
+        }
+
+        .buy{
+            flex-shrink: 2;
+        }
+        .product{
+            flex-grow: 1;
+
+
+        }
+
+        p{
+            padding: 15px 5px 5px 5px;
+        }
+
+        .arrow{
+            height: 20px;
+            margin-left: 5px;
+        }
+
+
+        .support{
+            flex-grow: 1;
+        }
+
+        .learn{
+            flex-grow: 1;
+        }
+
+        .company{
+            flex-grow: 2;
+        }
+
+        .download{
+            flex-grow: 1;
+        }
+
+        .english{
+            flex-grow: 1;
+        }
+
+        .search{
+            flex-shrink: 1;
+        }
+
+        button{
+            background-color: yellow;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 25px;;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="icon"><img id="logo" src="icon.png" alt=""></li>
+                <li class="product"><p>Products <img class="arrow" src="arrow.png" alt=""></p></li>
+                <li class="buy"><p>Buy</p></li>
+                <li class="support"><p>Support <img class="arrow" src="arrow.png" alt=""></p></li>
+                <li class="learn"><p>Learn <img class="arrow" src="arrow.png" alt=""></p></li>
+                <li class="company"><p>Company <img  class="arrow" src="arrow.png" alt=""></p></li>
+                <li class="download"><button>Download</button></li>
+                <li class="english"><p><img class="arrow" src="globe.svg" alt="">English</p></li>
+                <li class="search"><p> <img  class="arrow" src="search.png" alt="">Search</p></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

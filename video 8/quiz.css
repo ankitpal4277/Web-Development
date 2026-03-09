@@ -1,0 +1,17 @@
+/* div{
+    margin-bottom: 10px;
+    color: brown;
+}
+
+#name, #city, #pin\ code{
+    margin-left: 10px;
+    border: 2px solid green;
+    border-radius: 5px;
+    padding: 5px;
+} */
+
+input{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;;
+}

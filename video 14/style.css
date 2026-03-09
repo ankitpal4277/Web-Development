@@ -1,0 +1,7 @@
+div{
+    color: red;
+}
+
+p, div{
+    background-color: yellowgreen;
+}
