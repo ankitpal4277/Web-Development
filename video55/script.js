@@ -1,11 +1,13 @@
+console.log("Welcome to JavaScript");
 console.log("hello")
 
 var a = 5;
 var b = 6;
+var c = "Ankit Pal"
 
 console.log(a + b)
 
-console.log(typeof a , typeof b)
+console.log(typeof a , typeof b, typeof c)
 
 // const c = 7;
 // c = c + 1;
@@ -26,10 +28,13 @@ console.log(typeof x, typeof y, typeof z, typeof p, typeof q, typeof r)
 
 let o = {
     name: "Ankit Pal", 
-    "job code": 4277
+    "job code": 4277, 
+    isnice: true
 }
 
 console.log(o)
+
+console.log(typeof o)
 
 o.salary = 50000;
 
