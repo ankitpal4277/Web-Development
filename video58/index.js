@@ -7,7 +7,7 @@ function greet(name) {
 greet("Ankit")
 
 function add(a, b) {
-    // console.log(a + b)
+    // console.lom g(a + b)
     return a + b
 
 }

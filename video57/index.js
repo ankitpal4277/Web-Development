@@ -28,3 +28,11 @@ for (const value in obj) {
 for (const i of b) {
     console.log(i)
 }
+
+
+age = 50;
+
+while (age < 100){
+    console.log(age);
+    age++;
+}
