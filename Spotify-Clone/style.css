@@ -1,0 +1,16 @@
+body{
+    /* background-color: black;
+    color: white; */
+}
+
+ div{
+    border: 2px solid red;
+ }
+
+.left{
+    width: 25vw;
+}
+
+.right{
+    width: 75vw;
+}
