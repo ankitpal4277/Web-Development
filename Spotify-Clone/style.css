@@ -6,7 +6,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-body{
+body {
     background-color: black;
     color: white;
 }
@@ -19,6 +19,9 @@ body{
 .right {
     width: 75vw;
     margin: 16px 0;
+    /* max-height: 100vh;
+    overflow-y: scroll; */
+    position: relative;
 }
 
 .home {}
@@ -49,7 +52,7 @@ body{
     width: 30px;
 }
 
-.library{
+.library {
     min-height: 80vh;
     position: relative;
 }
@@ -61,32 +64,110 @@ body{
     gap: 13px;
     position: absolute;
     bottom: 0;
+    padding: 10px 0;
 }
 
 .footer a {
     color: grey;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     background-color: rgb(34 34 34);
+    height: 75px;
 }
 
-.header > *{
+.header>* {
     padding: 20px;
 }
 
-.spotifyPlaylists{
-    padding: 6px;
+.spotifyPlaylists {
+    padding: 16px;
 }
 
-.spotifyPlaylists .card{
-    width: 250px;
+.cardcontainer {
+    margin: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-height: 75vh;
+    overflow-y: scroll;
+}
+
+.card {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #252525;
+    position: relative;
 
 }
 
-.card img{
+.card>* {
+    padding-top: 10px;
+}
+
+.card img {
     width: 100%;
     object-fit: contain;
+}
+
+.play {
+    position: absolute;
+    bottom: 100px;
+    right: 17px;
+    opacity: 1;
+    transition: all 1s ease-out;
+}
+
+.buttons > *{
+    margin: 0 12px;
+}
+
+.signupbtn {
+    background-color: rgb(34 34 34);
+    color: rgb(82, 82, 82);
+    font-weight: bold;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.signupbtn:hover {
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+}
+
+.loginbtn{
+    background-color: white;
+    border-radius: 21px;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.loginbtn:hover{
+    font-weight: bold;
+    width: 83px;
+    padding: 12px; 
+}
+
+
+
+.playbar{
+    position: absolute;
+    bottom: 0;
+    background-color: #1ED760;
+    width: 100%;
+    padding: 12px;
+}
+
+.songbuttons{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }

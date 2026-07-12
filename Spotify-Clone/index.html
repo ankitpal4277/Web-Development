@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Spotify - Web Player: Music for everyone</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css" </head>
 
@@ -57,24 +57,54 @@
                     </svg>
                 </div>
                 <div class="buttons">
-                    <button>Signup</button>
-                    <button>Login</button>
+                    <button class="signupbtn">Sign up</button>
+                    <button class="loginbtn">Log in</button>
                 </div>
             </div>
 
             <div class="spotifyPlaylists">
                 <h1>Spotify Playlists</h1>
-                <div class="carcontainer">
+                <div class="cardcontainer">
+
                     <div class="card border">
-                        <img src="" alt="">
+                        <div class="play">
+                            <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="24" cy="24" r="24" fill="#1ED760" />
+                                <path d="M19 15L33 24L19 33V15Z" fill="black" />
+                            </svg>
+                        </div>
+                        <img src="https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/radio/artist/4YRxDV8wJFPHPTeXepOstw/en-GB"
+                            alt="">
                         <h2>Happy Hits!</h2>
                         <p>Hits to boost your mood and fill you with happiness!</p>
                     </div>
+
+                    <div class="card border">
+                        <img src="https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/radio/artist/4YRxDV8wJFPHPTeXepOstw/en-GB"
+                            alt="">
+                        <h2>Happy Hits!</h2>
+                        <p>Hits to boost your mood and fill you with happiness!</p>
+                    </div>
+
+
+                </div>
+                <div class="playbar">
+                    <div class="songinfo">
+
+                    </div>
+                    <div class="songbuttons">
+                        <img src="./img/prevsong.svg">
+                        <img src="./img/play.svg">
+                        <img src="./img/nextsong.svg">
+                    </div>
+                    <div class="songtime"></div>
                 </div>
             </div>
         </div>
 
     </div>
+    <script src="script.js"></script>
+
 </body>
 
 </html>
