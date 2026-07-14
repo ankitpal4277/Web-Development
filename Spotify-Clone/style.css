@@ -121,7 +121,7 @@ body {
     transition: all 1s ease-out;
 }
 
-.buttons > *{
+.buttons>* {
     margin: 0 12px;
 }
 
@@ -140,7 +140,7 @@ body {
     cursor: pointer;
 }
 
-.loginbtn{
+.loginbtn {
     background-color: white;
     border-radius: 21px;
     color: black;
@@ -150,41 +150,45 @@ body {
     cursor: pointer;
 }
 
-.loginbtn:hover{
+.loginbtn:hover {
     font-weight: bold;
     width: 83px;
-    padding: 12px; 
-}
-
-
-
-.playbar{
-    position: absolute;
-    bottom: 0;
-    background-color: #1ED760;
-    width: 100%;
     padding: 12px;
 }
 
-.songbuttons{
+
+
+.playbar {
+    position: absolute;
+    bottom: 10px;
+    background-color: #1ED760;
+    width: 70vw;
+    padding: 12px;
+    border-radius: 10px;
+    height: 39px;
+}
+
+.songbuttons {
     display: flex;
     justify-content: center;
     gap: 12px;
 }
 
-.songList{
-    height: 644px;
+.songList {
+    height: 544px;
     overflow: auto;
+    margin-bottom: 44px;
 }
 
-.songLIst ul{
+
+.songLIst ul {
     padding: 0 10px;
-    margin: 34px 0; 
+    margin: 34px 0;
 }
 
-.songList ul li{
+.songList ul li {
     list-style-type: decimal;
-    display : flex;
+    display: flex;
     gap: 10px;
     cursor: pointer;
     padding: 12px 0;
@@ -195,21 +199,41 @@ body {
     justify-content: space-between;
 }
 
-.songList .info{
+.songList .info {
     font-size: 13px;
     width: 344px;
 
 }
 
-.playnow{
+.playnow {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-.playnow span{
+.playnow span {
     font-size: 10px;
     width: 64px;
-    
+
+}
+
+.seekbar {
+    height: 2px;
+    width: 98%;
+    border-radius: 10px;
+    background-color:  white;
+    position: absolute;
+    bottom: 5px;
+}
+
+.circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background-color: white;
+    position: relative;
+    bottom: 6px;
+    left: 0%;
+    transition: left 0.5s;
 }
