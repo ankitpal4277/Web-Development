@@ -2,7 +2,7 @@ console.log("Lets write javascript code");
 let currentsong = new Audio()
 
 function secondsToMinutesSeconds(seconds) {
-    if(isNaN(seconds) || seconds < 0) {
+    if (isNaN(seconds) || seconds < 0) {
         return "Invalid input"
     }
 
@@ -37,13 +37,18 @@ async function getSongs() {
     return songs
 }
 
-const playMusic = (track) => {
+const playMusic = (track, pause = false) => {
     console.log("Trying to play:", track)
     currentsong.src = `./songs/${encodeURIComponent(track)}`;
+    if (!pause) {
+        currentsong.play()
+        play.src = "./img/pause.svg"
+
+
+    }
     console.log("Final src:", currentsong.src);
     currentsong.load();
     currentsong.play().catch(err => console.error("Playback failed:", err));
-    play.src = "./img/pause.svg"
     document.querySelector(".songinfo").innerHTML = track;
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
 }
@@ -53,7 +58,7 @@ async function main() {
 
     // Get the list of all the songs
     let songs = await getSongs()
-    currentsong.src = songs[0]
+    playMusic(songs[0], true)
 
     // show all the songs in the playlist
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
@@ -82,7 +87,7 @@ async function main() {
 
     // Attach an event listener to play, next and previous
     play.addEventListener("click", () => {
-        if(currentsong.paused) {
+        if (currentsong.paused) {
             currentsong.play()
             play.src = "./img/pause.svg"
         }
@@ -93,10 +98,18 @@ async function main() {
     })
 
     // Listen for timeupdate event 
-    currentsong.addEventListener("timeupdate", ()=>{
+    currentsong.addEventListener("timeupdate", () => {
         console.log(currentsong.currentTime, currentsong.duration);
-        document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentsong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration) }`
+        document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentsong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration)}`
+        document.querySelector(".circle").style.left = (currentsong.currentTime/ currentsong.duration) * 100 + "%";
     })
+
+    // Add an event listener to the seekbar   
+    document.querySelector(".seekbar").addEventListener("click", e=>{
+        let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
+        document.querySelector(".circle").style.left = percent + "% ";
+        currentsong.currentTime = ((currentsong.duration)* percent)/100
+    })           
 }
 
 main()
