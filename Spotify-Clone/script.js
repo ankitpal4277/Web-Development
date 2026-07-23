@@ -100,7 +100,7 @@ async function main() {
     // Listen for timeupdate event 
     currentsong.addEventListener("timeupdate", () => {
         console.log(currentsong.currentTime, currentsong.duration);
-        document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentsong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration)}`
+        document.querySelector(".songtime").innerHTML = `${secondsToMinutesSeconds(currentsong.currentTime)} / ${secondsToMinutesSeconds(currentsong.duration)}`
         document.querySelector(".circle").style.left = (currentsong.currentTime/ currentsong.duration) * 100 + "%";
     })
 
@@ -109,7 +109,18 @@ async function main() {
         let percent = (e.offsetX/e.target.getBoundingClientRect().width) * 100;
         document.querySelector(".circle").style.left = percent + "% ";
         currentsong.currentTime = ((currentsong.duration)* percent)/100
-    })           
+    })  
+    
+    // Add an event listener for hamburger 
+    document.querySelector(".hamburger").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "0"
+    }) 
+    
+
+    // Add an event listener for close button 
+    document.querySelector(".close").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "-120%"
+    }) 
 }
 
 main()
