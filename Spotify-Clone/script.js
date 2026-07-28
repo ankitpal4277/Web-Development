@@ -147,7 +147,7 @@ async function main() {
     })
 
     // Add an event to volume 
-    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", ()=>{
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
         console.log(e, e.target, e.target.value)
         currentsong.volume = parseInt(e.target.value) / 100
     })
@@ -155,7 +155,7 @@ async function main() {
     // Load the playlist when the card is clicked 
     Array.from(document.getElementsByClassName("card")).forEach(e=>{
         e.addEventListener("click", async item=>{
-            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
+            songs = await getSongs(item.currentTarget.dataset.folder)
             
         })
     }
