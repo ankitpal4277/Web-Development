@@ -1,5 +1,6 @@
 console.log("Lets write javascript code");
 let songs;
+let currfolder;
 let currentsong = new Audio()
 
 function secondsToMinutesSeconds(seconds) {
@@ -16,8 +17,9 @@ function secondsToMinutesSeconds(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-async function getSongs() {
-    let a = await fetch("./songs/")
+async function getSongs(folder) {
+    currfolder = folder;
+    let a = await fetch(`./songs/${folder}`)
     let response = await a.text();
 
     let div = document.createElement("div");
@@ -40,7 +42,7 @@ async function getSongs() {
 
 const playMusic = (track, pause = false) => {
     console.log("Trying to play:", track)
-    currentsong.src = `./songs/${encodeURIComponent(track)}`;
+    currentsong.src = `./songs/${currfolder}/${encodeURIComponent(track)}`;
     if (!pause) {
         currentsong.play()
         play.src = "./img/pause.svg"
@@ -58,7 +60,7 @@ async function main() {
 
 
     // Get the list of all the songs
-    songs = await getSongs()
+    songs = await getSongs("ncs")
     playMusic(songs[0], true)
 
     // show all the songs in the playlist
@@ -147,8 +149,17 @@ async function main() {
     // Add an event to volume 
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", ()=>{
         console.log(e, e.target, e.target.value)
-        currentsong.volume = parseInt(e.target.value)/100
+        currentsong.volume = parseInt(e.target.value) / 100
     })
+
+    // Load the playlist when the card is clicked 
+    Array.from(document.getElementsByClassName("card")).forEach(e=>{
+        e.addEventListener("click", async item=>{
+            songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
+            
+        })
+    }
+    )
 
 }
 
