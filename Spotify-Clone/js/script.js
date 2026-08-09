@@ -18,23 +18,9 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder) {
     currfolder = folder;
-    let a = await fetch(`./songs/${folder}`)
-    let response = await a.text();
-
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let as = Array.from(div.getElementsByTagName("a"));
-    songs = []
-
-    for (let i = 0; i < as.length; i++) {
-        const element = as[i];
-        const href = element.href;
-
-        if (href && href.toLowerCase().endsWith(".mp3")) {
-            const fileName = decodeURIComponent(new URL(href).pathname.split("/").pop());
-            songs.push(fileName);
-        }
-    }
+    let res = await fetch(`./songs/songs.json`);
+    let manifest = await res.json();
+    songs = manifest[folder] || [];
 
     // show all the songs in the playlist
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0];
@@ -73,7 +59,7 @@ async function getSongs(folder) {
 
 const playMusic = (track, pause = false) => {
 
-    currentsong.src = `./songs/${currfolder}/${encodeURIComponent(track)}`;
+    currentsong.src = `./songs/${encodeURIComponent(currfolder)}/${encodeURIComponent(track)}`;
     currentsong.load();
 
     // Strip the file extension only for display
@@ -89,32 +75,17 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let res = await fetch(`./songs/`);
-    let response = await res.text();
-
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let anchors = Array.from(div.getElementsByTagName("a"));
+    let res = await fetch(`./songs/songs.json`);
+    let manifest = await res.json();
     let cardcontainer = document.querySelector(".cardcontainer");
-    cardcontainer.innerHTML = ""; // clear hardcoded placeholder cards
+    cardcontainer.innerHTML = "";
 
-    for (const e of anchors) {
-        let hrefAttr = e.getAttribute("href"); // raw value, NOT auto-resolved
-
-        // Only keep direct subfolders of /songs/  e.g. "/songs/cs"
-        if (!hrefAttr || !hrefAttr.startsWith("/songs/") || hrefAttr === "/songs/") {
-            continue;
-        }
-
-        // Strip any trailing slash (if present) then take the last segment
-        let folder = decodeURIComponent(hrefAttr.replace(/\/$/, "").split("/").pop());
-
-        if (!folder) continue; // safety net
+    for (const folder of Object.keys(manifest)) {
 
         let title = folder;
         let description = "";
         try {
-            let infoRes = await fetch(`./songs/${folder}/info.json`);
+            let infoRes = await fetch(`./songs/${encodeURIComponent(folder)}/info.json`);
             if (!infoRes.ok) throw new Error("no info.json");
             let info = await infoRes.json();
             title = info.title || folder;
@@ -130,7 +101,7 @@ async function displayAlbums() {
                             <path d="M19 15L33 24L19 33V15Z" fill="black" />
                         </svg>
                     </div>
-                    <img src="./songs/${folder}/cover.jpg" onerror="this.src='./img/music.svg'" alt="">
+                    <img src="./songs/${encodeURIComponent(folder)}/cover.jpg" onerror="this.src='./img/music.svg'" alt="">
                     <h2>${title}</h2>
                     <p>${description}</p>
                 </div>`;
